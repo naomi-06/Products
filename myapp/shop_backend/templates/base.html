@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Site{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'product_list' %}">Products</a></li>
+                <li><a href="{% url 'info' %}">Info</a></li>
+                {% if user.is_authenticated %}
+                <li привет , {{user.username}}!</li>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+</body>
+</html>
