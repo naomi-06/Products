@@ -12,3 +12,8 @@ def index(request):
 def info(request):
     productcount = Product.objects.count()
     return render(request, 'info.html', {'productcount': productcount})
+def product_details(request, product_id):
+    #передача null если не найдено продукт
+
+    product = Product.objects.filter(id=product_id).first()
+    return render(request, 'product_details.html', {'product': product})

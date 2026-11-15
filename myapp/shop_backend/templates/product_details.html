@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Product Details{% endblock %}
+
+{% block content %}
+{% if product %}
+<h1>{{ product.name }}</h1>
+<p>{{ product.description }}</p>
+<p class="product-price"> Цена: {{ product.price }} тг</p>
+{% else %}
+<p>Этого продукта нет в наличии.🤷‍♂️</p>
+{% endif %}
+{% endblock %}
